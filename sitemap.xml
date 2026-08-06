@@ -1,25 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Homepage -->
   <url>
     <loc>https://abmatikka.fi/</loc>
-    <lastmod>2026-07-16</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
+  <!-- Location Pages -->
+  <url>
+    <loc>https://abmatikka.fi/espoo/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://abmatikka.fi/helsinki/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://abmatikka.fi/vantaa/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Online Tutoring -->
+  <url>
+    <loc>https://abmatikka.fi/etaopetus/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Legal Pages -->
   <url>
     <loc>https://abmatikka.fi/privacy.html</loc>
-    <lastmod>2026-07-16</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.1</priority>
   </url>
 
   <url>
     <loc>https://abmatikka.fi/terms.html</loc>
-    <lastmod>2026-07-16</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.1</priority>
   </url>
 
 </urlset>
