@@ -467,7 +467,7 @@ html {
 
   .nav-links.active {
     max-height: 450px;
-    padding: 0;
+    padding: 8px 0 0;
   }
 
   .nav-links a {
