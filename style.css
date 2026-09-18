@@ -1151,6 +1151,9 @@ textarea {
 .nav {
   min-height: var(--nav-height);
   padding: 14px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   background: rgba(11, 13, 18, 0.82);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(18px) saturate(130%);
@@ -1402,6 +1405,13 @@ button:focus-visible {
   .nav {
     min-height: var(--nav-height);
     padding: 12px 20px;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: var(--nav-height);
+    margin-top: 0;
+    z-index: 999;
   }
 
   .logo img {
