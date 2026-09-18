@@ -1111,13 +1111,7 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(
-      circle at 50% -20%,
-      rgba(55, 70, 100, 0.18),
-      transparent 42%
-    ),
-    var(--bg);
+  background: var(--bg);
   color: var(--text);
   font-family:
     Inter,
@@ -1340,12 +1334,7 @@ textarea {
 }
 
 .dark {
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.018),
-      rgba(255, 255, 255, 0.008)
-    );
+  background: transparent;
 }
 
 /* Cards */

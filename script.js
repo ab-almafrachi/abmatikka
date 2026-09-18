@@ -2,20 +2,39 @@
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.getElementById("nav-links");
 
+function setMenuState(isOpen) {
+  if (!hamburger || !navLinks) return;
+
+  hamburger.classList.toggle("active", isOpen);
+  navLinks.classList.toggle("active", isOpen);
+  hamburger.setAttribute("aria-expanded", String(isOpen));
+  hamburger.setAttribute(
+    "aria-label",
+    isOpen ? "Sulje valikko" : "Avaa valikko"
+  );
+}
+
 if (hamburger && navLinks) {
 hamburger.addEventListener("click", () => {
-hamburger.classList.toggle("active");
-navLinks.classList.toggle("active");
+const isOpen = hamburger.getAttribute("aria-expanded") === "true";
+setMenuState(!isOpen);
+});
+
+document.addEventListener("keydown", event => {
+if (event.key === "Escape") {
+setMenuState(false);
+}
 });
 }
 
-document.querySelectorAll('a[href^="#"]').forEach(link => {
+document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach(link => {
   link.addEventListener("click", e => {
     const targetId = link.getAttribute("href");
 
     if (!targetId || targetId === "#") return;
 
-    const target = document.querySelector(targetId);
+    const targetSelector = targetId.startsWith("/#") ? targetId.slice(1) : targetId;
+    const target = document.querySelector(targetSelector);
     if (!target) return;
 
     e.preventDefault();
@@ -26,10 +45,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     });
 
     // close mobile menu
-    if (hamburger && navLinks) {
-      hamburger.classList.remove("active");
-      navLinks.classList.remove("active");
-    }
+    setMenuState(false);
   });
 });
 
