@@ -251,21 +251,3 @@ function loadGA() {
   document.head.appendChild(script);
 }
 
-const subjectSelect = document.getElementById("contact_subject");
-const otherSubjectGroup = document.getElementById("other-subject-group");
-const otherSubjectInput = document.getElementById("other_subject");
-
-if (subjectSelect) {
-  subjectSelect.addEventListener("change", function () {
-
-    if (this.value === "other") {
-      otherSubjectGroup.style.display = "block";
-      otherSubjectInput.required = true;
-    } else {
-      otherSubjectGroup.style.display = "none";
-      otherSubjectInput.required = false;
-      otherSubjectInput.value = "";
-    }
-
-  });
-}
