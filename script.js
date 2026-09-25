@@ -1,3 +1,54 @@
+// Language switcher
+const languageMap = {
+  "/": "/en/",
+  "/espoo/": "/en/espoo/",
+  "/helsinki/": "/en/helsinki/",
+  "/vantaa/": "/en/vantaa/",
+  "/etaopetus/": "/en/online-tutoring/",
+  "/varaa-tunti.html": "/en/book-a-lesson.html",
+  "/ota-yhteytta.html": "/en/contact.html",
+  "/kayttoehdot.html": "/en/terms.html",
+  "/tietosuoja.html": "/en/privacy.html",
+  "/kiitos.html": "/en/thank-you.html",
+
+  "/en/": "/",
+  "/en/espoo/": "/espoo/",
+  "/en/helsinki/": "/helsinki/",
+  "/en/vantaa/": "/vantaa/",
+  "/en/online-tutoring/": "/etaopetus/",
+  "/en/book-a-lesson.html": "/varaa-tunti.html",
+  "/en/contact.html": "/ota-yhteytta.html",
+  "/en/terms.html": "/kayttoehdot.html",
+  "/en/privacy.html": "/tietosuoja.html",
+  "/en/thank-you.html": "/kiitos.html"
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  const languageOptions = document.querySelectorAll(".lang-option");
+
+  if (!languageOptions.length) return;
+
+  languageOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const currentPath = window.location.pathname.replace(/\/+$/, "/");
+      const isActive = option.classList.contains("active");
+
+      // Clicking the currently selected language simply refreshes the page.
+      if (isActive) {
+        window.location.reload();
+        return;
+      }
+
+      // Clicking the other language navigates to its mapped equivalent.
+      const target = languageMap[currentPath];
+
+      if (target) {
+        window.location.href = target;
+      }
+    });
+  });
+});
+
 // Hamburger menu
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.getElementById("nav-links");
@@ -8,9 +59,13 @@ function setMenuState(isOpen) {
   hamburger.classList.toggle("active", isOpen);
   navLinks.classList.toggle("active", isOpen);
   hamburger.setAttribute("aria-expanded", String(isOpen));
+  const isEnglish = document.documentElement.lang === "en";
+
   hamburger.setAttribute(
     "aria-label",
-    isOpen ? "Sulje valikko" : "Avaa valikko"
+    isOpen
+      ? (isEnglish ? "Close menu" : "Sulje valikko")
+      : (isEnglish ? "Open menu" : "Avaa valikko")
   );
 }
 
@@ -39,10 +94,37 @@ document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach(link => {
 
     e.preventDefault();
 
-    target.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
+    const startY = window.scrollY;
+    const targetY = target.getBoundingClientRect().top + window.scrollY;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      window.scrollTo(0, targetY);
+      setMenuState(false);
+      return;
+    }
+
+    const distance = targetY - startY;
+    const duration = 650;
+    const startTime = performance.now();
+
+    const easeInOutCubic = (t) =>
+      t < 0.5
+        ? 4 * t * t * t
+        : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+    const animateScroll = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeInOutCubic(progress);
+
+      window.scrollTo(0, startY + distance * easedProgress);
+
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
+      }
+    };
+
+    requestAnimationFrame(animateScroll);
 
     // close mobile menu
     setMenuState(false);

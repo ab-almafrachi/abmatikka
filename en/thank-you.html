@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You | AbMatikka</title>
+
+  <!-- Prevents Google from showing this thank-you page in search results -->
+  <meta name="robots" content="noindex, follow">
+
+  <meta name="description" content="Thank you for contacting AbMatikka. Your message has been received successfully. I will get back to you as soon as possible.">
+
+  <link rel="stylesheet" href="/style.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
+  <link rel="manifest" href="/images/icons/site.webmanifest">
+
+  <!-- Canonical URL for this specific page -->
+  <link rel="canonical" href="https://abmatikka.fi/en/thank-you.html">
+  <link rel="alternate" hreflang="fi" href="https://abmatikka.fi/kiitos.html">
+  <link rel="alternate" hreflang="en" href="https://abmatikka.fi/en/thank-you.html">
+  <link rel="alternate" hreflang="x-default" href="https://abmatikka.fi/kiitos.html">
+</head>
+
+
+<body>
+
+<div id="top"></div>
+<!-- NAV -->
+<nav class="nav">
+  <a href="/en/" class="logo">
+    <img src="/images/logo.png" alt="AbMatikka">
+  </a>
+  <button class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="/en/" onclick="setTimeout(() => window.scrollTo(0,0), 0)">Home</a>
+    <a href="/#about" data-key="nav_about">About Tutoring</a>
+    <a href="/#pricing" data-key="nav_pricing">Pricing</a>
+    <a href="/#faq" data-key="nav_faq">FAQ</a>
+    <a href="/en/contact.html" class="btn-small" data-key="nav_contact">Contact</a>
+    <a href="/en/book-a-lesson.html" class="btn-small" data-key="nav_booking">Book a Lesson</a>
+      <div class="lang-dropdown-btn" aria-label="Language">
+      <button class="lang-option" type="button" aria-label="Suomi">
+        <span class="lang-flag" aria-hidden="true">🇫🇮</span><span class="lang-code">FI</span>
+      </button>
+      <span class="lang-separator" aria-hidden="true">·</span>
+      <button class="lang-option active" type="button" aria-label="English" aria-current="true">
+        <span class="lang-flag" aria-hidden="true">🇬🇧</span><span class="lang-code">EN</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="thankyou-page">
+
+  <div class="thankyou-card">
+
+  <div class="thankyou-icon">✓</div>
+
+  <h1>Thank You!</h1>
+
+  <p>
+    Your message has been received successfully.
+  </p>
+
+  <div class="thankyou-info">
+
+    <h2>📩 If you sent a contact request</h2>
+    <p>
+      I usually respond within 24 hours. I will provide further information and answer your questions as clearly as possible.
+    </p>
+
+    <h2>📅 If you requested a lesson</h2>
+    <p>
+      I will contact you soon to confirm the time and discuss the content and schedule of the lessons.
+    </p>
+
+  </div>
+
+  <div class="thankyou-buttons">
+    <a class="btn" href="/en/">Back to Home</a>
+  </div>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+  <div class="footer-top">
+    <p class="footer-copy">
+      © 2026 AbMatikka. All rights reserved.
+    </p>
+  </div>
+
+  <p class="footer-id">
+    Service area: Espoo, Helsinki, Vantaa, and online tutoring throughout Finland.
+  </p>
+
+  <div class="footer-billing">
+    <a href="https://www.ukko.fi/" target="_blank" rel="noopener noreferrer">
+      <img
+      loading="lazy"
+        src="/images/UKKO_Kevytyrittaja_logo_white.png"
+        alt="FAQO.fi"
+        class="footer-ukko-logo">
+    </a>
+  </div>
+
+  <div class="footer-links">
+    <a href="/en/terms.html">Terms of Service</a>
+    <span class="divider">•</span>
+    <a href="/en/privacy.html">Privacy Policy</a>
+  </div>
+
+</footer>
+
+<script src="/script.js"></script>
+
+<div id="cookie-banner" class="cookie-banner">
+  <div class="cookie-box">
+    <div class="cookie-text">
+      <h3>Cookies</h3>
+      <p>
+        We use Google Analytics to analyze how the website is used. 
+        The information is used only to improve the website. 
+        You can accept or reject analytics cookies.
+      </p>
+    </div>
+
+    <div class="cookie-actions">
+  <button id="cookie-accept" class="cookie-btn accept">Accept</button>
+  <button id="cookie-reject" class="cookie-btn reject">Reject</button>
+</div>
+  </div>
+</div>
+
+<div id="cookie-modal" class="cookie-modal">
+
+  <div class="cookie-modal-box">
+
+    <h2>Cookie Settings</h2>
+
+    <p>
+      Voit valita, sallitaanko Google Analytics -analytiikka.
+    </p>
+
+    <label class="cookie-toggle">
+      <input
+        type="checkbox"
+        id="analytics-toggle">
+      Allow analytics cookies
+    </label>
+
+    <button
+      id="cookie-save"
+      class="cookie-btn accept">
+      Save Settings
+    </button>
+
+  </div>
+
+</div>
+
+<button id="cookie-settings-floating" class="cookie-settings-floating">
+    🍪 Cookie Settings
+</button>
+</body>
+</html>
