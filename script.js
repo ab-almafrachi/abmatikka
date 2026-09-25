@@ -1,50 +1,34 @@
 // Language switcher
-const languageMap = {
-  "/": "/en/",
-  "/espoo/": "/en/espoo/",
-  "/helsinki/": "/en/helsinki/",
-  "/vantaa/": "/en/vantaa/",
-  "/etaopetus/": "/en/online-tutoring/",
-  "/varaa-tunti.html": "/en/book-a-lesson.html",
-  "/ota-yhteytta.html": "/en/contact.html",
-  "/kayttoehdot.html": "/en/terms.html",
-  "/tietosuoja.html": "/en/privacy.html",
-  "/kiitos.html": "/en/thank-you.html",
-
-  "/en/": "/",
-  "/en/espoo/": "/espoo/",
-  "/en/helsinki/": "/helsinki/",
-  "/en/vantaa/": "/vantaa/",
-  "/en/online-tutoring/": "/etaopetus/",
-  "/en/book-a-lesson.html": "/varaa-tunti.html",
-  "/en/contact.html": "/ota-yhteytta.html",
-  "/en/terms.html": "/kayttoehdot.html",
-  "/en/privacy.html": "/tietosuoja.html",
-  "/en/thank-you.html": "/kiitos.html"
-};
-
 document.addEventListener("DOMContentLoaded", () => {
   const languageOptions = document.querySelectorAll(".lang-option");
-
   if (!languageOptions.length) return;
 
-  languageOptions.forEach((option) => {
-    option.addEventListener("click", () => {
-      const currentPath = window.location.pathname.replace(/\/+$/, "/");
-      const isActive = option.classList.contains("active");
+  const languageTargets = {
+    fi: document.querySelector('link[rel="alternate"][hreflang="fi"]')?.href,
+    en: document.querySelector('link[rel="alternate"][hreflang="en"]')?.href
+  };
 
-      // Clicking the currently selected language simply refreshes the page.
-      if (isActive) {
+  languageOptions.forEach((option) => {
+    const isEnglish = option.getAttribute("aria-label") === "English";
+    const language = isEnglish ? "en" : "fi";
+    const target = languageTargets[language];
+
+    if (target) {
+      option.dataset.languageTarget = target;
+    }
+
+    option.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      const destination = option.dataset.languageTarget || languageTargets[language];
+      if (!destination) return;
+
+      if (option.classList.contains("active")) {
         window.location.reload();
         return;
       }
 
-      // Clicking the other language navigates to its mapped equivalent.
-      const target = languageMap[currentPath];
-
-      if (target) {
-        window.location.href = target;
-      }
+      window.location.assign(destination);
     });
   });
 });
