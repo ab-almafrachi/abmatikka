@@ -66,6 +66,7 @@ setMenuState(false);
 });
 }
 
+// Smooth scrolling
 document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach(link => {
   link.addEventListener("click", e => {
     const targetId = link.getAttribute("href");
@@ -77,40 +78,8 @@ document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach(link => {
     if (!target) return;
 
     e.preventDefault();
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
 
-    const startY = window.scrollY;
-    const targetY = target.getBoundingClientRect().top + window.scrollY;
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      window.scrollTo(0, targetY);
-      setMenuState(false);
-      return;
-    }
-
-    const distance = targetY - startY;
-    const duration = 650;
-    const startTime = performance.now();
-
-    const easeInOutCubic = (t) =>
-      t < 0.5
-        ? 4 * t * t * t
-        : 1 - Math.pow(-2 * t + 2, 3) / 2;
-
-    const animateScroll = (currentTime) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const easedProgress = easeInOutCubic(progress);
-
-      window.scrollTo(0, startY + distance * easedProgress);
-
-      if (progress < 1) {
-        requestAnimationFrame(animateScroll);
-      }
-    };
-
-    requestAnimationFrame(animateScroll);
-
-    // close mobile menu
     setMenuState(false);
   });
 });
