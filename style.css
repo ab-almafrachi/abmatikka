@@ -871,13 +871,18 @@ button {
 .footer-cta {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 12px;
   margin: 20px 0;
   flex-wrap: wrap;
 }
 
 .footer-btn {
-  display: inline-block;
+  display: inline-flex;
+  width: fit-content;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
   padding: 10px 16px;
   border-radius: 8px;
   text-decoration: none;
